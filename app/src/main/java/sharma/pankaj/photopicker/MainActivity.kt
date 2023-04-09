@@ -2,11 +2,11 @@ package sharma.pankaj.photopicker
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.net.toFile
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,15 +31,15 @@ class MainActivity : AppCompatActivity() {
         findViewById<RadioGroup>(R.id.mediaTypeSelector).setOnCheckedChangeListener { group, checkedId ->
             when(checkedId){
                 R.id.image -> {
-                    spinner.visibility = View.GONE
+                    spinner.visibility = View.INVISIBLE
                     mediaType = "image"
                 }
                 R.id.video ->  {
-                    spinner.visibility = View.GONE
+                    spinner.visibility = View.INVISIBLE
                     mediaType = "video"
                 }
                 R.id.imageVideo ->  {
-                    spinner.visibility = View.GONE
+                    spinner.visibility = View.INVISIBLE
                     mediaType = "imageVideo"
                 }
                 R.id.mimeType -> {
@@ -71,6 +71,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * for multiple selection
+     * [
+     *      val pickMultipleMedia =registerForActivityResult(PickMultipleVisualMedia(10))
+     * ]
+     * */
 
     private val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         if (uri != null) {
