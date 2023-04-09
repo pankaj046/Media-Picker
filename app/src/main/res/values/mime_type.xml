@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="mime_type">
+        <item>image/png</item>
+        <item>image/jpeg</item>
+        <item>image/gif</item>
+        <item>image/*</item>
+        <item>video/mp4</item>
+        <item>video/*</item>
+    </string-array>
+</resources>
